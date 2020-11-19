@@ -27,7 +27,7 @@ if (isset($_GET["plat"])) {
     <head>
         <title>Le Bon Barquette</title>
         <!-- Required meta tags -->
-        <meta charset="utf-8">
+        <meta charset="utf-8bin">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
@@ -37,6 +37,7 @@ if (isset($_GET["plat"])) {
     <body>
 
         <div class="container">
+            <?php echo '<img src="images_plats/'.$plat->getImage().'"height="122" width="163">'?>
             <form action="page_plat.php" method="POST">
                 <input id="idplat" name="idplat" type="hidden" value="<?php echo $plat->getId() ?>">
                 <label for="nplat">Nom :</label>
@@ -45,7 +46,7 @@ if (isset($_GET["plat"])) {
                 <input type="text" id="prixplat" name="prixplat" value="<?php echo $plat->getPrix() ?>"><br><br>
                 <label for="descplat">Description :</label>
                 <textarea id="descplat" name="descplat"
-                          rows="5" cols="33"><?php echo $plat->getDescription() ?>"</textarea><br><br>
+                          rows="5" cols="33"><?php echo $plat->getDescription() ?></textarea><br><br>
 
                 <button type="submit" class="btn btn-outline-success">Modifier</button> &nbsp;    
             </form>
