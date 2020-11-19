@@ -24,7 +24,7 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
     <div class="container-fluid">
         <div class="row justify-content-between">
             <img id="logo" src="img/Logo_Le_Bon_Barquette.png" class="col-auto mr-auto">
-            <div class="col-auto">
+            <div class="col-auto align-self-center">
                 <button type="button" class="btn btn-success" style="border-radius: 40px;">Log in</button>
             </div>
         </div>
@@ -46,14 +46,17 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
 
 
     <div class="container-fluid">
+        <div class="container-fluid">
+            <a class="btn btn-primary" href="ajouter_plat.php" role="button">Ajouter un plat</a>
+        </div>
         <div class="container-fluid row justify-content-between">
             <div class="col">
-                <h3 class="col">Liste des plats</h3>
+                <h3>Liste des plats</h3>
             </div>         
 
             <!-- <div class="btn-group col">
-                <button onclick="scrollGauche()" type="button" class="btn btn-success"><</button>
-                <button onclick="scrollDroite()" type="button" class="btn btn-success">></button>
+                <button onclick="scrollGauche()" type="button" class="btn btn-success"> < </button>
+                <button onclick="scrollDroite()" type="button" class="btn btn-success"> > </button>
             </div>  -->           
         </div>
         
@@ -64,8 +67,8 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
                 {
                     echo '
                     <div class="col-sm-4 col-md-3">
-                        <div class="card card-block border-0" style=" width: 100%;">
-                            <img src="images_plats/pizzaTest.jpg" class="card-img-top">
+                        <div class="card carte-plat card-block border-0">
+                            <img src="images_plats/'.$plat->getImage().'" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">'.$plat->getNom().'</h5>
                                 <h5 class="card-title text-right">'.$plat->getPrix().'</h5>
@@ -80,9 +83,7 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
         
     </div>
 
-    <div class="container-fluid">
-        <a class="btn btn-primary" href="ajouter_plat.php" role="button">Ajouter un plat</a>
-    </div>
+    
     
 
 
