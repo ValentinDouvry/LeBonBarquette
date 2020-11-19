@@ -1,12 +1,3 @@
-<?php
-include_once("connexion_bd.php");
-include_once('Plat.php');
-
-$requete = $db->query("SELECT * FROM plats");
-$listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,28 +25,28 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
         <div>LINKS</div>
     </div>
 
-    <div class="container-fluid">
-        <div class="card-deck">
-            <?php
-            foreach($listePlats as $plat)
-            {
-                echo '
-                <div class="card border-0" style=" width: 18rem;">
-                    <img src="images_plats/pizzaTest.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">'.$plat->getNom().'</h5>
-                        <h5 class="card-title text-right">'.$plat->getPrix().'</h5>
-                        <a href="page_plat.php?plat='.$plat->getId().'" class="stretched-link"></a>
-                    </div>                    
-                </div>';
-            }
-            ?>
-            
-        </div>
-    </div>
+    <div class="container">
+        <form action="ajout_plat.php" method="GET">
+            <div class="form-group">
+                <label for="inputNomPlat">Nom</label>
+                <input type="text" class="form-control" id="inputNomPlat" name="inputNomPlat" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPrixPlat">Prix</label>
+                <input type="text" class="form-control" id="inputPrixPlat" name="inputPrixPlat" required>
+            </div>
+            <div class="form-group">
+                <label for="inputDescriptionPlat">Description</label>
+                <input type="text" class="form-control" id="inputDescriptionPlat" name="inputDescriptionPlat" required>
+            </div>
 
-    <div class="container-fluid">
-        <a class="btn btn-primary" href="ajouter_plat.php" role="button">Ajouter un plat</a>
+            <!-- <form action="upload.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit">
+            </form> -->
+
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
     </div>
     
 
