@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 19 Novembre 2020 à 07:01
+-- Généré le: Ven 20 Novembre 2020 à 04:58
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -42,12 +42,12 @@ CREATE TABLE IF NOT EXISTS `plats` (
 --
 
 INSERT INTO `plats` (`id`, `nom`, `prix`, `description`, `image`) VALUES
-(1, 'rougail saucisse', '5€', 'Saucisses revenues avec des oignons, des tomates et du curcuma', NULL),
-(2, 'Cabri massale', '10€', 'Dés de gigot de cabri (petit de la chèvre) cuit avec des épices (cumin, coriandre, fenugrec, clous de girofle et grains de moutarde) agrémenté de feuille calou pillé', NULL),
-(3, 'Rougail boucane', '10€', 'Poitrine de porc fumé découpée puis revenue avec des oignons, des tomates et du curcuma et cuit à l’étouffée', NULL),
-(4, 'Rougail la morue', '8€', 'Morue émincé cuit à l‘étouffée avec des tomates, des oignons et du curcuma', NULL),
-(5, 'Civet zourite', '15€', 'Morceaux de Zourite mariné dans du vin rouge puis cuit à l’étouffé avec des tomates, oignons, ail, et soupçon de girofle', NULL),
-(6, 'Cari Poulet', '7€', 'Morceaux de poulet dégraissés revenues avec des oignons, des tomates et du curcuma', NULL);
+(1, 'rougail saucisse', '5€', 'Saucisses revenues avec des oignons, des tomates et du curcuma', 'rougailSaucisse.jpg'),
+(2, 'Cabri massale', '10€', 'Dés de gigot de cabri (petit de la chèvre) cuit avec des épices (cumin, coriandre, fenugrec, clous de girofle et grains de moutarde) agrémenté de feuille calou pillé', 'cabriMassale.jpg'),
+(3, 'Rougail boucane', '10€', 'Poitrine de porc fumé découpée puis revenue avec des oignons, des tomates et du curcuma et cuit à l’étouffée', 'rougailBoucane.jpg'),
+(4, 'Rougail la morue', '8€', 'Morue émincé cuit à l‘étouffée avec des tomates, des oignons et du curcuma', 'rougailMorue.jpg'),
+(5, 'Civet zourite', '15€', 'Morceaux de Zourite mariné dans du vin rouge puis cuit à l’étouffé avec des tomates, oignons, ail, et soupçon de girofle', 'civetZourite.jpg'),
+(6, 'Cari Poulet', '7€', 'Morceaux de poulet dégraissés revenues avec des oignons, des tomates et du curcuma', 'cariPoulet.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
