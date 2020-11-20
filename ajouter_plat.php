@@ -49,6 +49,7 @@
                 <input type="text" class="form-control" id="inputDescriptionPlat" name="inputDescriptionPlat" required>
             </div>
             <div class="form-group">
+            <label for="inputImagePlat">Image:</label>
                 <input type="file" name="inputImagePlat" id="inputImagePlat">
             </div>
 

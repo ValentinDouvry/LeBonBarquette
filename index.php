@@ -5,6 +5,10 @@ include_once('Plat.php');
 $requete = $db->query("SELECT * FROM plats");
 $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
 
+$arrayListesPlats = array_chunk($listePlats, ceil(count($listePlats) / 3));
+
+
+
 ?>
 
 <!doctype html>
@@ -54,32 +58,73 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
                 <h3>Liste des plats</h3>
             </div>         
 
-            <!-- <div class="btn-group col">
-                <button onclick="scrollGauche()" type="button" class="btn btn-success"> < </button>
-                <button onclick="scrollDroite()" type="button" class="btn btn-success"> > </button>
-            </div>  -->           
+            <div class="btn-group col">
+                <button id="boutonPrecedent" type="button" class="btn btn-success"> < </button>
+                <button id="boutonSuivant" type="button" class="btn btn-success"> > </button>
+            </div>            
         </div>
         
-        <div class="container-fluid ">
-            <div class="plats-container row " id="plats-container">
-                <?php
-                foreach($listePlats as $plat)
-                {
-                    echo '
-                    <div class="col-sm-4 col-md-3">
-                        <div class="card carte-plat card-block border-0">
-                            <img src="images_plats/'.$plat->getImage().'" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$plat->getNom().'</h5>
-                                <h5 class="card-title text-right">'.$plat->getPrix().'</h5>
-                                <a href="page_plat.php?plat='.$plat->getId().'" class="stretched-link"></a>
-                            </div>                    
+        <section class="carousel slide" data-interval="false" id="carousel-plats">
+            <div class="container pt-0 mt-2">
+                <div class="row mt-0"> 
+                    <div class="col-md-12">             
+                        <div class="carousel-inner">                            
+                                <?php
+                                echo '<div class="card-deck carousel-item active flex-column flex-sm-row">';
+                                foreach($arrayListesPlats[0] as $plat)
+                                {
+                                    echo '
+                                        <div class="card carte-plat border-0">
+                                            <div class="card-img-top card-img-top-250">
+                                                <img src="images_plats/'.$plat->getImage().'" class="img-fluid">
+                                            </div>                                        
+                                            <div class="card-block pt-2">
+                                                <h5 class="card-title">'.$plat->getNom().'</h5>
+                                                <h5 class="card-title text-right">'.$plat->getPrix().'</h5>
+                                                <a href="page_plat.php?plat='.$plat->getId().'" class="stretched-link"></a>
+                                            </div>                    
+                                        </div>';
+                                }
+                                echo '</div>';
+                                echo '<div class="card-deck carousel-item flex-column flex-sm-row">';
+                                foreach($arrayListesPlats[1] as $plat)
+                                {
+                                    echo '
+                                        <div class="card carte-plat border-0">
+                                            <div class="card-img-top card-img-top-250">
+                                                <img src="images_plats/'.$plat->getImage().'" class="img-fluid">
+                                            </div>                                        
+                                            <div class="card-block pt-2">
+                                                <h5 class="card-title">'.$plat->getNom().'</h5>
+                                                <h5 class="card-title text-right">'.$plat->getPrix().'</h5>
+                                                <a href="page_plat.php?plat='.$plat->getId().'" class="stretched-link"></a>
+                                            </div>                    
+                                        </div>';
+                                }
+                                echo '</div>';
+                                echo '<div class="card-deck carousel-item flex-column flex-sm-row">';
+                                foreach($arrayListesPlats[2] as $plat)
+                                {
+                                    echo '
+                                        <div class="card carte-plat border-0">
+                                            <div class="card-img-top card-img-top-250">
+                                                <img src="images_plats/'.$plat->getImage().'" class="img-fluid">
+                                            </div>                                        
+                                            <div class="card-block pt-2">
+                                                <h5 class="card-title">'.$plat->getNom().'</h5>
+                                                <h5 class="card-title text-right">'.$plat->getPrix().'</h5>
+                                                <a href="page_plat.php?plat='.$plat->getId().'" class="stretched-link"></a>
+                                            </div>                    
+                                        </div>';
+                                }
+                                echo '</div>';
+
+                                ?>
                         </div>
-                    </div>';
-                }
-                ?>            
+                    </div>
+                </div>           
             </div>
-        </div>
+        </section>
         
     </div>
 
@@ -88,24 +133,25 @@ $listePlats = $requete->fetchAll(PDO::FETCH_CLASS,"Plat");
 
 
 
-    <!-- <script>
-        function scrollDroite() {
-            var elmnt = document.getElementById("plats-container");
-            elmnt.scrollLeft += 300;          
-        }
-        function scrollGauche() {
-            var elmnt = document.getElementById("plats-container");
-            elmnt.scrollLeft -= 300;          
-        }
-
-
-    </script> -->
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <script>
+
+        $("#boutonPrecedent").click(function(){
+            $("#carousel-plats").carousel("prev");
+        });
+
+        $("#boutonSuivant").click(function(){
+            $("#carousel-plats").carousel("next");
+        });
+
+    </script>
 
   </body>
 </html>
